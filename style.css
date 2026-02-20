@@ -1,4 +1,4 @@
-/* Set a background image for the entire page */
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -20,6 +20,7 @@ h1 {
     color: #fff;
 }
 
+/* Main buttons */
 #mainButtons {
     text-align: center;
     margin-top: 50px;
@@ -28,7 +29,7 @@ h1 {
 button {
     padding: 15px 30px;
     font-size: 1.2rem;
-    background-color: #3498db;
+    background-color: #9b59b6; /* purple */
     color: white;
     border: none;
     border-radius: 5px;
@@ -37,17 +38,32 @@ button {
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #8e44ad; /* darker purple */
 }
 
-/* Initially hide the rating interfaces */
+/* Submit rating buttons (keep green) */
+.submitRating, .submitMovieRatings {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #27ae60; /* green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submitRating:hover, .submitMovieRatings:hover {
+    background-color: #2ecc71;
+}
+
+/* Rating interface section */
 #ratingInterfaces {
     display: none;
     text-align: center;
     margin-top: 20px;
 }
 
-/* Rating interface style */
 .ratingInterface {
     margin-bottom: 40px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -65,23 +81,7 @@ input[type="number"] {
     border-radius: 5px;
 }
 
-/* Submit button */
-.submitRating {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.submitRating:hover {
-    background-color: #2ecc71;
-}
-
-/* Feedback form section */
+/* Feedback form */
 #feedback {
     margin-top: 50px;
     text-align: center;
@@ -98,7 +98,7 @@ textarea {
 button[type="submit"] {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #3498db;
+    background-color: #3498db; /* optional: keep feedback button blue */
     color: white;
     border: none;
     border-radius: 5px;
