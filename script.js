@@ -1,74 +1,49 @@
-// Show rating interface when a button is clicked
-const rateTVShowsBtn = document.getElementById('rateTVShows');
-const rateFootballersBtn = document.getElementById('rateFootballers');
-const rateMoviesBtn = document.getElementById('rateMovies');
-const rateGamesBtn = document.getElementById('rateGames');
+// Initial Data (Loads from LocalStorage if it exists)
+let ratingsData = JSON.parse(localStorage.getItem('sweetweb_ratings')) || {};
 
-const ratingInterfaces = document.getElementById('ratingInterfaces');
-
-const tvShowsInterface = document.getElementById('tvShowsInterface');
-const footballersInterface = document.getElementById('footballersInterface');
-const moviesInterface = document.getElementById('moviesInterface');
-const gamesInterface = document.getElementById('gamesInterface');
-
-function showInterface(interface) {
-    ratingInterfaces.style.display = 'block';
-    tvShowsInterface.style.display = 'none';
-    footballersInterface.style.display = 'none';
-    moviesInterface.style.display = 'none';
-    gamesInterface.style.display = 'none';
-    interface.style.display = 'block';
-}
-
-rateTVShowsBtn.onclick = () => showInterface(tvShowsInterface);
-rateFootballersBtn.onclick = () => showInterface(footballersInterface);
-rateMoviesBtn.onclick = () => showInterface(moviesInterface);
-rateGamesBtn.onclick = () => showInterface(gamesInterface);
-
-// ----------------------------------------
-// TV Shows Rating Logic
-const tvShowRatingsData = {
-    gameOfThrones: { total: 0, count: 0 },
-    breakingBad: { total: 0, count: 0 },
-    strangerThings: { total: 0, count: 0 },
+// UI Navigation
+const interfaces = {
+    rateTVShows: 'tvShowsInterface',
+    rateFootballers: 'footballersInterface',
+    rateMovies: 'moviesInterface',
+    rateGames: 'gamesInterface'
 };
 
-const submitTVShowsRatingsBtn = document.querySelector('.submitTVShowsRatings');
-
-submitTVShowsRatingsBtn.addEventListener('click', () => {
-    const tvShows = ['gameOfThrones', 'breakingBad', 'strangerThings'];
-
-    tvShows.forEach(tvShow => {
-        const input = document.getElementById(`${tvShow}Rating`);
-        const value = parseInt(input.value);
-        const avgDisplay = document.getElementById(`${tvShow}Avg`);
-
-        if (value >= 1 && value <= 5) {
-            tvShowRatingsData[tvShow].total += value;
-            tvShowRatingsData[tvShow].count += 1;
-
-            const avgRating = (tvShowRatingsData[tvShow].total / tvShowRatingsData[tvShow].count).toFixed(1);
-            avgDisplay.textContent = avgRating;
-
-            input.value = '';
-        } else if (input.value !== '') {
-            alert(`Please rate ${tvShow.replace(/([A-Z])/g, ' $1').trim()} between 1 and 5.`);
-        }
-    });
+Object.keys(interfaces).forEach(btnId => {
+    document.getElementById(btnId).onclick = () => {
+        document.querySelectorAll('.ratingInterface').forEach(el => el.style.display = 'none');
+        document.getElementById(interfaces[btnId]).style.display = 'block';
+    };
 });
 
-// ----------------------------------------
-// Footballers Rating Logic
-const footballerRatingsData = {
-    messi: { total: 0, count: 0 },
-    ronaldo: { total: 0, count: 0 },
-    neymar: { total: 0, count: 0 },
+// Universal Rating Function
+function submitRating(category, itemKeys) {
+    itemKeys.forEach(key => {
+        const input = document.getElementById(`${key}Rating`);
+        const val = parseInt(input.value);
+        
+        if (val >= 1 && val <= 5) {
+            if (!ratingsData[key]) ratingsData[key] = { total: 0, count: 0 };
+            ratingsData[key].total += val;
+            ratingsData[key].count++;
+            
+            // Save to LocalStorage
+            localStorage.setItem('sweetweb_ratings', JSON.stringify(ratingsData));
+            updateDisplay(key);
+            input.value = '';
+        }
+    });
+}
+
+// Update text on screen
+function updateDisplay(key) {
+    if (ratingsData[key]) {
+        const avg = (ratingsData[key].total / ratingsData[key].count).toFixed(1);
+        document.getElementById(`${key}Avg`).innerText = avg;
+    }
+}
+
+// Load all saved ratings on page start
+window.onload = () => {
+    Object.keys(ratingsData).forEach(key => updateDisplay(key));
 };
-
-const submitFootballersRatingsBtn = document.querySelector('.submitFootballersRatings');
-
-submitFootballersRatingsBtn.addEventListener('click', () => {
-    const footballers = ['messi', 'ronaldo', 'neymar'];
-
-    footballers.forEach(footballer => {
-        const
