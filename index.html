@@ -25,53 +25,78 @@
 
     <!-- Rating interfaces (initially hidden) -->
     <section id="ratingInterfaces">
-        <!-- Movies rating interface -->
-        <div id="moviesInterface" class="ratingInterface">
-            <h2>Rate Movies</h2>
-
-            <div class="movieRatingItem">
-                <label for="inceptionRating">Inception:</label>
-                <input type="number" id="inceptionRating" min="1" max="5" placeholder="Rate 1-5">
-                <p>Current Score: <span id="inceptionAvg">0</span> / 5</p>
-            </div>
-
-            <div class="movieRatingItem">
-                <label for="darkKnightRating">The Dark Knight:</label>
-                <input type="number" id="darkKnightRating" min="1" max="5" placeholder="Rate 1-5">
-                <p>Current Score: <span id="darkKnightAvg">0</span> / 5</p>
-            </div>
-
-            <div class="movieRatingItem">
-                <label for="endgameRating">Avengers: Endgame:</label>
-                <input type="number" id="endgameRating" min="1" max="5" placeholder="Rate 1-5">
-                <p>Current Score: <span id="endgameAvg">0</span> / 5</p>
-            </div>
-
-            <button class="submitMovieRatings">Submit Ratings</button>
-        </div>
-
-        <!-- TV Shows rating interface (same as before, generic placeholder) -->
+        <!-- TV Shows rating interface -->
         <div id="tvShowsInterface" class="ratingInterface">
             <h2>Rate TV Shows</h2>
-            <input type="number" id="tvShowRating" min="1" max="5" placeholder="Rate (1-5)" required>
-            <button class="submitRating" data-category="tvShows">Submit Rating</button>
-            <p>Current Score: <span id="tvShowAvg">0</span> / 5</p>
+            <div class="tvShowRatingItem">
+                <label for="gameOfThronesRating">Game of Thrones:</label>
+                <input type="number" id="gameOfThronesRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="gameOfThronesAvg">0</span> / 5</p>
+            </div>
+
+            <div class="tvShowRatingItem">
+                <label for="breakingBadRating">Breaking Bad:</label>
+                <input type="number" id="breakingBadRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="breakingBadAvg">0</span> / 5</p>
+            </div>
+
+            <div class="tvShowRatingItem">
+                <label for="strangerThingsRating">Stranger Things:</label>
+                <input type="number" id="strangerThingsRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="strangerThingsAvg">0</span> / 5</p>
+            </div>
+
+            <button class="submitTVShowsRatings">Submit Ratings</button>
         </div>
 
         <!-- Footballers rating interface -->
         <div id="footballersInterface" class="ratingInterface">
             <h2>Rate Footballers</h2>
-            <input type="number" id="footballerRating" min="1" max="5" placeholder="Rate (1-5)" required>
-            <button class="submitRating" data-category="footballers">Submit Rating</button>
-            <p>Current Score: <span id="footballerAvg">0</span> / 5</p>
+            <div class="footballerRatingItem">
+                <label for="messiRating">Lionel Messi:</label>
+                <input type="number" id="messiRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="messiAvg">0</span> / 5</p>
+            </div>
+
+            <div class="footballerRatingItem">
+                <label for="ronaldoRating">Cristiano Ronaldo:</label>
+                <input type="number" id="ronaldoRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="ronaldoAvg">0</span> / 5</p>
+            </div>
+
+            <div class="footballerRatingItem">
+                <label for="neymarRating">Neymar:</label>
+                <input type="number" id="neymarRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="neymarAvg">0</span> / 5</p>
+            </div>
+
+            <button class="submitFootballersRatings">Submit Ratings</button>
         </div>
+
+        <!-- Movies rating interface (already done) -->
 
         <!-- Games rating interface -->
         <div id="gamesInterface" class="ratingInterface">
             <h2>Rate Games</h2>
-            <input type="number" id="gameRating" min="1" max="5" placeholder="Rate (1-5)" required>
-            <button class="submitRating" data-category="games">Submit Rating</button>
-            <p>Current Score: <span id="gameAvg">0</span> / 5</p>
+            <div class="gameRatingItem">
+                <label for="fifa23Rating">FIFA 23:</label>
+                <input type="number" id="fifa23Rating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="fifa23Avg">0</span> / 5</p>
+            </div>
+
+            <div class="gameRatingItem">
+                <label for="godOfWarRating">God of War:</label>
+                <input type="number" id="godOfWarRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="godOfWarAvg">0</span> / 5</p>
+            </div>
+
+            <div class="gameRatingItem">
+                <label for="cyberpunkRating">Cyberpunk 2077:</label>
+                <input type="number" id="cyberpunkRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="cyberpunkAvg">0</span> / 5</p>
+            </div>
+
+            <button class="submitGamesRatings">Submit Ratings</button>
         </div>
     </section>
 
