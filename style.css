@@ -1,0 +1,110 @@
+/* Set a background image for the entire page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background: url('uwp4984878.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+#mainButtons {
+    text-align: center;
+    margin-top: 50px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Initially hide the rating interfaces */
+#ratingInterfaces {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Rating interface style */
+.ratingInterface {
+    margin-bottom: 40px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* Rating input */
+input[type="number"] {
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Submit button */
+.submitRating {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submitRating:hover {
+    background-color: #2ecc71;
+}
+
+/* Feedback form section */
+#feedback {
+    margin-top: 50px;
+    text-align: center;
+}
+
+textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 300px;
+    height: 100px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
