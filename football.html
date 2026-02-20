@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In-Form Players - SWEETWEB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+</head>
+<body>
+    <header>
+        <h1>In-Form Players</h1>
+        <a href="index.html" class="home-link">← Back to Home</a>
+    </header>
+    <section class="rating-container">
+        <div class="ratingItem" data-key="messi"><label>Lionel Messi</label>
+            <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
+            <div class="result-bar"><div class="fill" id="messiBar"></div></div>
+            <p>Approval: <span id="messiPercent">0</span>%</p>
+        </div>
+        <div class="ratingItem" data-key="ronaldo"><label>Cristiano Ronaldo</label>
+            <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
+            <div class="result-bar"><div class="fill" id="ronaldoBar"></div></div>
+            <p>Approval: <span id="ronaldoPercent">0</span>%</p>
+        </div>
+        <div class="ratingItem" data-key="mbappe"><label>Kylian Mbappé</label>
+            <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
+            <div class="result-bar"><div class="fill" id="mbappeBar"></div></div>
+            <p>Approval: <span id="mbappePercent">0</span>%</p>
+        </div>
+        <div class="ratingItem" data-key="haaland"><label>Erling Haaland</label>
+            <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
+            <div class="result-bar"><div class="fill" id="haalandBar"></div></div>
+            <p>Approval: <span id="haalandPercent">0</span>%</p>
+        </div>
+        <button class="submitBtn">Submit My Votes</button>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
