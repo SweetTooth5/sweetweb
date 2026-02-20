@@ -3,130 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweettooth Ratings</title>
+    <title>SWEETWEB - Home</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
     <header>
         <h1>SWEETWEB</h1>
-        <p>Rate Or Share Your Thoughts</p>
+        <p>Select a category to start rating</p>
     </header>
-
     <section id="mainButtons">
-        <button id="rateTVShows">Trending Series</button>
-        <button id="rateFootballers">In-Form Players</button>
-        <button id="rateMovies">Blockbuster Movies</button>
-        <button id="rateGames">Top Tier Games</button>
+        <a href="series.html"><button>Trending Series</button></a>
+        <a href="football.html"><button>In-Form Players</button></a>
+        <a href="movies.html"><button>Blockbuster Movies</button></a>
+        <a href="games.html"><button>Top Tier Games</button></a>
     </section>
-
-    <section id="ratingInterfaces">
-        <!-- Trending Series -->
-        <div id="tvShowsInterface" class="ratingInterface">
-            <h2>Trending Series</h2>
-            <div class="ratingItem" data-key="gameOfThrones">
-                <label>Game of Thrones</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="gameOfThronesAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="breakingBad">
-                <label>Breaking Bad</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="breakingBadAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="lastOfUs">
-                <label>The Last of Us</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="lastOfUsAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="theBear">
-                <label>The Bear</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="theBearAvg">0</span></p>
-            </div>
-            <button class="submitBtn">Submit Ratings</button>
-        </div>
-
-        <!-- In-Form Players -->
-        <div id="footballersInterface" class="ratingInterface">
-            <h2>In-Form Players</h2>
-            <div class="ratingItem" data-key="messi">
-                <label>Lionel Messi</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="messiAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="ronaldo">
-                <label>Cristiano Ronaldo</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="ronaldoAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="mbappe">
-                <label>Kylian Mbappé</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="mbappeAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="haaland">
-                <label>Erling Haaland</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="haalandAvg">0</span></p>
-            </div>
-            <button class="submitBtn">Submit Ratings</button>
-        </div>
-
-        <!-- Blockbuster Movies -->
-        <div id="moviesInterface" class="ratingInterface">
-            <h2>Blockbuster Movies</h2>
-            <div class="ratingItem" data-key="inception">
-                <label>Inception</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="inceptionAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="interstellar">
-                <label>Interstellar</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="interstellarAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="darkKnight">
-                <label>The Dark Knight</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="darkKnightAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="avatar">
-                <label>Avatar</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="avatarAvg">0</span></p>
-            </div>
-            <button class="submitBtn">Submit Ratings</button>
-        </div>
-
-        <!-- Top Tier Games -->
-        <div id="gamesInterface" class="ratingInterface">
-            <h2>Top Tier Games</h2>
-            <div class="ratingItem" data-key="fifa23">
-                <label>FIFA 23</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="fifa23Avg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="godOfWar">
-                <label>God of War</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="godOfWarAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="eldenRing">
-                <label>Elden Ring</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="eldenRingAvg">0</span></p>
-            </div>
-            <div class="ratingItem" data-key="gtaV">
-                <label>GTA V</label>
-                <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
-                <p>Score: <span id="gtaVAvg">0</span></p>
-            </div>
-            <button class="submitBtn">Submit Ratings</button>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
 </body>
 </html>
 
