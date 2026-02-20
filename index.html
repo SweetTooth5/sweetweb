@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweettooth Ratings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background image -->
+    <div class="background"></div>
+
+    <header>
+        <h1>SWEETWEB</h1>
+        <p>Rate Or Share Your Thoughts</p>
+    </header>
+
+    <!-- Main buttons for rating categories -->
+    <section id="mainButtons">
+        <button id="rateTVShows">Rate TV Shows</button>
+        <button id="rateFootballers">Rate Footballers</button>
+        <button id="rateMovies">Rate Movies</button>
+        <button id="rateGames">Rate Games (PS, Xbox, PC)</button>
+    </section>
+
+    <!-- Rating interfaces (initially hidden) -->
+    <section id="ratingInterfaces">
+        <!-- TV Shows rating interface -->
+        <div id="tvShowsInterface" class="ratingInterface">
+            <h2>Rate TV Shows</h2>
+            <input type="number" id="tvShowRating" min="1" max="5" placeholder="Rate (1-5)" required>
+            <button class="submitRating" data-category="tvShows">Submit Rating</button>
+            <p>Current Score: <span id="tvShowAvg">0</span> / 5</p>
+        </div>
+
+        <!-- Footballers rating interface -->
+        <div id="footballersInterface" class="ratingInterface">
+            <h2>Rate Footballers</h2>
+            <input type="number" id="footballerRating" min="1" max="5" placeholder="Rate (1-5)" required>
+            <button class="submitRating" data-category="footballers">Submit Rating</button>
+            <p>Current Score: <span id="footballerAvg">0</span> / 5</p>
+        </div>
+
+        <!-- Movies rating interface -->
+        <div id="moviesInterface" class="ratingInterface">
+            <h2>Rate Movies</h2>
+            <input type="number" id="movieRating" min="1" max="5" placeholder="Rate (1-5)" required>
+            <button class="submitRating" data-category="movies">Submit Rating</button>
+            <p>Current Score: <span id="movieAvg">0</span> / 5</p>
+        </div>
+
+        <!-- Games rating interface -->
+        <div id="gamesInterface" class="ratingInterface">
+            <h2>Rate Games</h2>
+            <input type="number" id="gameRating" min="1" max="5" placeholder="Rate (1-5)" required>
+            <button class="submitRating" data-category="games">Submit Rating</button>
+            <p>Current Score: <span id="gameAvg">0</span> / 5</p>
+        </div>
+    </section>
+
+    <section id="feedback">
+        <h2>Share Your Opinion</h2>
+        <form id="feedbackForm" action="https://formspree.io/f/your-form-id" method="POST">
+            <label for="userFeedback">What do you think?</label>
+            <textarea id="userFeedback" name="userFeedback" required></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
