@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background"></div>
-
     <header>
         <h1>SWEETWEB</h1>
         <p>Rate Or Share Your Thoughts</p>
@@ -25,65 +23,41 @@
         <!-- TV Shows -->
         <div id="tvShowsInterface" class="ratingInterface">
             <h2>Rate TV Shows</h2>
-            <div class="ratingItem">
-                <label>Game of Thrones:</label>
-                <input type="number" id="gameOfThronesRating" min="1" max="5" placeholder="1-5">
-                <p>Score: <span id="gameOfThronesAvg">0</span> / 5</p>
-            </div>
-            <div class="ratingItem">
-                <label>Breaking Bad:</label>
-                <input type="number" id="breakingBadRating" min="1" max="5" placeholder="1-5">
-                <p>Score: <span id="breakingBadAvg">0</span> / 5</p>
-            </div>
-            <button class="submitBtn" onclick="submitRating('tv', ['gameOfThrones', 'breakingBad'])">Submit</button>
+            <div class="ratingItem"><label>Game of Thrones:</label> <input type="number" id="gameOfThronesRating" min="1" max="5"><p>Score: <span id="gameOfThronesAvg">0</span></p></div>
+            <div class="ratingItem"><label>Breaking Bad:</label> <input type="number" id="breakingBadRating" min="1" max="5"><p>Score: <span id="breakingBadAvg">0</span></p></div>
+            <div class="ratingItem"><label>The Last of Us:</label> <input type="number" id="lastOfUsRating" min="1" max="5"><p>Score: <span id="lastOfUsAvg">0</span></p></div>
+            <div class="ratingItem"><label>The Bear:</label> <input type="number" id="theBearRating" min="1" max="5"><p>Score: <span id="theBearAvg">0</span></p></div>
+            <button class="submitBtn" onclick="submitRating(['gameOfThrones', 'breakingBad', 'lastOfUs', 'theBear'])">Submit TV Ratings</button>
         </div>
 
         <!-- Footballers -->
         <div id="footballersInterface" class="ratingInterface">
             <h2>Rate Footballers</h2>
-            <div class="ratingItem">
-                <label>Lionel Messi:</label>
-                <input type="number" id="messiRating" min="1" max="5" placeholder="1-5">
-                <p>Score: <span id="messiAvg">0</span> / 5</p>
-            </div>
-            <div class="ratingItem">
-                <label>Cristiano Ronaldo:</label>
-                <input type="number" id="ronaldoRating" min="1" max="5" placeholder="1-5">
-                <p>Score: <span id="ronaldoAvg">0</span> / 5</p>
-            </div>
-            <button class="submitBtn" onclick="submitRating('sports', ['messi', 'ronaldo'])">Submit</button>
+            <div class="ratingItem"><label>Lionel Messi:</label> <input type="number" id="messiRating" min="1" max="5"><p>Score: <span id="messiAvg">0</span></p></div>
+            <div class="ratingItem"><label>Cristiano Ronaldo:</label> <input type="number" id="ronaldoRating" min="1" max="5"><p>Score: <span id="ronaldoAvg">0</span></p></div>
+            <div class="ratingItem"><label>Kylian Mbappé:</label> <input type="number" id="mbappeRating" min="1" max="5"><p>Score: <span id="mbappeAvg">0</span></p></div>
+            <div class="ratingItem"><label>Erling Haaland:</label> <input type="number" id="haalandRating" min="1" max="5"><p>Score: <span id="haalandAvg">0</span></p></div>
+            <button class="submitBtn" onclick="submitRating(['messi', 'ronaldo', 'mbappe', 'haaland'])">Submit Player Ratings</button>
         </div>
 
         <!-- Movies -->
         <div id="moviesInterface" class="ratingInterface">
             <h2>Rate Movies</h2>
-            <div class="ratingItem">
-                <label>Inception:</label>
-                <input type="number" id="inceptionRating" min="1" max="5" placeholder="1-5">
-                <p>Score: <span id="inceptionAvg">0</span> / 5</p>
-            </div>
-            <div class="ratingItem">
-                <label>Interstellar:</label>
-                <input type="number" id="interstellarRating" min="1" max="5" placeholder="1-5">
-                <p>Score: <span id="interstellarAvg">0</span> / 5</p>
-            </div>
-            <button class="submitBtn" onclick="submitRating('movies', ['inception', 'interstellar'])">Submit</button>
+            <div class="ratingItem"><label>Inception:</label> <input type="number" id="inceptionRating" min="1" max="5"><p>Score: <span id="inceptionAvg">0</span></p></div>
+            <div class="ratingItem"><label>Interstellar:</label> <input type="number" id="interstellarRating" min="1" max="5"><p>Score: <span id="interstellarAvg">0</span></p></div>
+            <div class="ratingItem"><label>The Dark Knight:</label> <input type="number" id="darkKnightRating" min="1" max="5"><p>Score: <span id="darkKnightAvg">0</span></p></div>
+            <div class="ratingItem"><label>Avatar:</label> <input type="number" id="avatarRating" min="1" max="5"><p>Score: <span id="avatarAvg">0</span></p></div>
+            <button class="submitBtn" onclick="submitRating(['inception', 'interstellar', 'darkKnight', 'avatar'])">Submit Movie Ratings</button>
         </div>
 
         <!-- Games -->
         <div id="gamesInterface" class="ratingInterface">
             <h2>Rate Games</h2>
-            <div class="ratingItem">
-                <label>FIFA 23:</label>
-                <input type="number" id="fifa23Rating" min="1" max="5" placeholder="1-5">
-                <p>Score: <span id="fifa23Avg">0</span> / 5</p>
-            </div>
-            <div class="ratingItem">
-                <label>God of War:</label>
-                <input type="number" id="godOfWarRating" min="1" max="5" placeholder="1-5">
-                <p>Score: <span id="godOfWarAvg">0</span> / 5</p>
-            </div>
-            <button class="submitBtn" onclick="submitRating('games', ['fifa23', 'godOfWar'])">Submit</button>
+            <div class="ratingItem"><label>FIFA 23:</label> <input type="number" id="fifa23Rating" min="1" max="5"><p>Score: <span id="fifa23Avg">0</span></p></div>
+            <div class="ratingItem"><label>God of War:</label> <input type="number" id="godOfWarRating" min="1" max="5"><p>Score: <span id="godOfWarAvg">0</span></p></div>
+            <div class="ratingItem"><label>Elden Ring:</label> <input type="number" id="eldenRingRating" min="1" max="5"><p>Score: <span id="eldenRingAvg">0</span></p></div>
+            <div class="ratingItem"><label>GTA V:</label> <input type="number" id="gtaVRating" min="1" max="5"><p>Score: <span id="gtaVAvg">0</span></p></div>
+            <button class="submitBtn" onclick="submitRating(['fifa23', 'godOfWar', 'eldenRing', 'gtaV'])">Submit Game Ratings</button>
         </div>
     </section>
 
