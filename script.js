@@ -1,49 +1,50 @@
-// Initial Data (Loads from LocalStorage if it exists)
-let ratingsData = JSON.parse(localStorage.getItem('sweetweb_ratings')) || {};
+// Persistent Database
+let ratingsData = JSON.parse(localStorage.getItem('sweetweb_data')) || {};
 
-// UI Navigation
-const interfaces = {
+// Navigation Setup
+const nav = {
     rateTVShows: 'tvShowsInterface',
     rateFootballers: 'footballersInterface',
     rateMovies: 'moviesInterface',
     rateGames: 'gamesInterface'
 };
 
-Object.keys(interfaces).forEach(btnId => {
-    document.getElementById(btnId).onclick = () => {
+Object.keys(nav).forEach(id => {
+    document.getElementById(id).onclick = () => {
         document.querySelectorAll('.ratingInterface').forEach(el => el.style.display = 'none');
-        document.getElementById(interfaces[btnId]).style.display = 'block';
+        document.getElementById(nav[id]).style.display = 'block';
     };
 });
 
-// Universal Rating Function
-function submitRating(category, itemKeys) {
-    itemKeys.forEach(key => {
+// Master Submit Function
+function submitRating(keys) {
+    keys.forEach(key => {
         const input = document.getElementById(`${key}Rating`);
         const val = parseInt(input.value);
-        
+
         if (val >= 1 && val <= 5) {
             if (!ratingsData[key]) ratingsData[key] = { total: 0, count: 0 };
+            
             ratingsData[key].total += val;
             ratingsData[key].count++;
             
-            // Save to LocalStorage
-            localStorage.setItem('sweetweb_ratings', JSON.stringify(ratingsData));
+            localStorage.setItem('sweetweb_data', JSON.stringify(ratingsData));
             updateDisplay(key);
             input.value = '';
         }
     });
 }
 
-// Update text on screen
 function updateDisplay(key) {
-    if (ratingsData[key]) {
+    const display = document.getElementById(`${key}Avg`);
+    if (display && ratingsData[key]) {
         const avg = (ratingsData[key].total / ratingsData[key].count).toFixed(1);
-        document.getElementById(`${key}Avg`).innerText = avg;
+        display.innerText = avg;
     }
 }
 
-// Load all saved ratings on page start
+// Initial Load of Scores
 window.onload = () => {
     Object.keys(ratingsData).forEach(key => updateDisplay(key));
 };
+
