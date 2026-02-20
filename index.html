@@ -25,7 +25,32 @@
 
     <!-- Rating interfaces (initially hidden) -->
     <section id="ratingInterfaces">
-        <!-- TV Shows rating interface -->
+        <!-- Movies rating interface -->
+        <div id="moviesInterface" class="ratingInterface">
+            <h2>Rate Movies</h2>
+
+            <div class="movieRatingItem">
+                <label for="inceptionRating">Inception:</label>
+                <input type="number" id="inceptionRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="inceptionAvg">0</span> / 5</p>
+            </div>
+
+            <div class="movieRatingItem">
+                <label for="darkKnightRating">The Dark Knight:</label>
+                <input type="number" id="darkKnightRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="darkKnightAvg">0</span> / 5</p>
+            </div>
+
+            <div class="movieRatingItem">
+                <label for="endgameRating">Avengers: Endgame:</label>
+                <input type="number" id="endgameRating" min="1" max="5" placeholder="Rate 1-5">
+                <p>Current Score: <span id="endgameAvg">0</span> / 5</p>
+            </div>
+
+            <button class="submitMovieRatings">Submit Ratings</button>
+        </div>
+
+        <!-- TV Shows rating interface (same as before, generic placeholder) -->
         <div id="tvShowsInterface" class="ratingInterface">
             <h2>Rate TV Shows</h2>
             <input type="number" id="tvShowRating" min="1" max="5" placeholder="Rate (1-5)" required>
@@ -39,14 +64,6 @@
             <input type="number" id="footballerRating" min="1" max="5" placeholder="Rate (1-5)" required>
             <button class="submitRating" data-category="footballers">Submit Rating</button>
             <p>Current Score: <span id="footballerAvg">0</span> / 5</p>
-        </div>
-
-        <!-- Movies rating interface -->
-        <div id="moviesInterface" class="ratingInterface">
-            <h2>Rate Movies</h2>
-            <input type="number" id="movieRating" min="1" max="5" placeholder="Rate (1-5)" required>
-            <button class="submitRating" data-category="movies">Submit Rating</button>
-            <p>Current Score: <span id="movieAvg">0</span> / 5</p>
         </div>
 
         <!-- Games rating interface -->
