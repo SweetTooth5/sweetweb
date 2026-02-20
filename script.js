@@ -25,61 +25,50 @@ rateFootballersBtn.onclick = () => showInterface(footballersInterface);
 rateMoviesBtn.onclick = () => showInterface(moviesInterface);
 rateGamesBtn.onclick = () => showInterface(gamesInterface);
 
-// Initialize category averages (for non-movie categories)
-const ratingsData = {
-    tvShows: { total: 0, count: 0 },
-    footballers: { total: 0, count: 0 },
-    games: { total: 0, count: 0 },
+// ----------------------------------------
+// TV Shows Rating Logic
+const tvShowRatingsData = {
+    gameOfThrones: { total: 0, count: 0 },
+    breakingBad: { total: 0, count: 0 },
+    strangerThings: { total: 0, count: 0 },
 };
 
-// Generic rating submission
-const submitRatingBtns = document.querySelectorAll('.submitRating');
-submitRatingBtns.forEach(button => {
-    button.addEventListener('click', (event) => {
-        const category = event.target.dataset.category;
-        const ratingInput = document.getElementById(`${category}Rating`);
-        const avgDisplay = document.getElementById(`${category}Avg`);
-        const rating = parseInt(ratingInput.value);
+const submitTVShowsRatingsBtn = document.querySelector('.submitTVShowsRatings');
 
-        if (rating >= 1 && rating <= 5) {
-            ratingsData[category].total += rating;
-            ratingsData[category].count += 1;
-            const avgRating = (ratingsData[category].total / ratingsData[category].count).toFixed(1);
-            avgDisplay.textContent = avgRating;
-            ratingInput.value = '';
-        } else {
-            alert("Please rate between 1 and 5.");
-        }
-    });
-});
+submitTVShowsRatingsBtn.addEventListener('click', () => {
+    const tvShows = ['gameOfThrones', 'breakingBad', 'strangerThings'];
 
-// ----------------- Movie ratings per item -----------------
-const movieRatingsData = {
-    inception: { total: 0, count: 0 },
-    darkKnight: { total: 0, count: 0 },
-    endgame: { total: 0, count: 0 },
-};
-
-const submitMovieRatingsBtn = document.querySelector('.submitMovieRatings');
-
-submitMovieRatingsBtn.addEventListener('click', () => {
-    const movies = ['inception', 'darkKnight', 'endgame'];
-
-    movies.forEach(movie => {
-        const input = document.getElementById(`${movie}Rating`);
+    tvShows.forEach(tvShow => {
+        const input = document.getElementById(`${tvShow}Rating`);
         const value = parseInt(input.value);
-        const avgDisplay = document.getElementById(`${movie}Avg`);
+        const avgDisplay = document.getElementById(`${tvShow}Avg`);
 
         if (value >= 1 && value <= 5) {
-            movieRatingsData[movie].total += value;
-            movieRatingsData[movie].count += 1;
+            tvShowRatingsData[tvShow].total += value;
+            tvShowRatingsData[tvShow].count += 1;
 
-            const avgRating = (movieRatingsData[movie].total / movieRatingsData[movie].count).toFixed(1);
+            const avgRating = (tvShowRatingsData[tvShow].total / tvShowRatingsData[tvShow].count).toFixed(1);
             avgDisplay.textContent = avgRating;
 
             input.value = '';
         } else if (input.value !== '') {
-            alert(`Please rate ${movie.replace(/([A-Z])/g, ' $1').trim()} between 1 and 5.`);
+            alert(`Please rate ${tvShow.replace(/([A-Z])/g, ' $1').trim()} between 1 and 5.`);
         }
     });
 });
+
+// ----------------------------------------
+// Footballers Rating Logic
+const footballerRatingsData = {
+    messi: { total: 0, count: 0 },
+    ronaldo: { total: 0, count: 0 },
+    neymar: { total: 0, count: 0 },
+};
+
+const submitFootballersRatingsBtn = document.querySelector('.submitFootballersRatings');
+
+submitFootballersRatingsBtn.addEventListener('click', () => {
+    const footballers = ['messi', 'ronaldo', 'neymar'];
+
+    footballers.forEach(footballer => {
+        const
