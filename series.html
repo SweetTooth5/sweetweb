@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trending Series - SWEETWEB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+</head>
+<body>
+    <header>
+        <h1>Trending Series</h1>
+        <a href="index.html" class="home-link">← Back to Home</a>
+    </header>
+    <section class="rating-container">
+        <div class="ratingItem" data-key="gameOfThrones"><label>Game of Thrones</label>
+            <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
+            <div class="result-bar"><div class="fill" id="gameOfThronesBar"></div></div>
+            <p>Approval: <span id="gameOfThronesPercent">0</span>%</p>
+        </div>
+        <div class="ratingItem" data-key="breakingBad"><label>Breaking Bad</label>
+            <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
+            <div class="result-bar"><div class="fill" id="breakingBadBar"></div></div>
+            <p>Approval: <span id="breakingBadPercent">0</span>%</p>
+        </div>
+        <div class="ratingItem" data-key="lastOfUs"><label>The Last of Us</label>
+            <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
+            <div class="result-bar"><div class="fill" id="lastOfUsBar"></div></div>
+            <p>Approval: <span id="lastOfUsPercent">0</span>%</p>
+        </div>
+        <button class="submitBtn">Submit My Votes</button>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
