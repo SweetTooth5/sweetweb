@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blockbuster Movies - SWEETWEB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+</head>
+<body>
+    <header>
+        <h1>Blockbuster Movies</h1>
+        <a href="index.html" class="home-link">← Back to Home</a>
+    </header>
+    <section class="rating-container">
+        <div class="ratingItem" data-key="inception"><label>Inception</label>
+            <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
+            <div class="result-bar"><div class="fill" id="inceptionBar"></div></div>
+            <p>Approval: <span id="inceptionPercent">0</span>%</p>
+        </div>
+        <div class="ratingItem" data-key="darkKnight"><label>The Dark Knight</label>
+            <div class="stars" data-value="0"><i class="fa-star far" data-index="1"></i><i class="fa-star far" data-index="2"></i><i class="fa-star far" data-index="3"></i><i class="fa-star far" data-index="4"></i><i class="fa-star far" data-index="5"></i></div>
+            <div class="result-bar"><div class="fill" id="darkKnightBar"></div></div>
+            <p>Approval: <span id="darkKnightPercent">0</span>%</p>
+        </div>
+        <button class="submitBtn">Submit My Votes</button>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
