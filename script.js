@@ -1,47 +1,29 @@
-// Load data on start
-document.addEventListener("DOMContentLoaded", displayNotes);
-
-function addNote() {
-    const title = document.getElementById('noteTitle').value;
-    const content = document.getElementById('noteContent').value;
-
-    if (!title || !content) {
-        alert("Enter both a topic and your notes!");
-        return;
+// Function to toggle the message box visibility
+function toggleMessageBox() {
+    const messageBox = document.getElementById('messageBox');
+    if (messageBox.style.display === 'block') {
+        messageBox.style.display = 'none';
+    } else {
+        messageBox.style.display = 'block';
     }
-
-    const note = { title, content, id: Date.now() };
-    const notes = JSON.parse(localStorage.getItem('sweettooth_data') || '[]');
-    notes.push(note);
-    localStorage.setItem('sweettooth_data', JSON.stringify(notes));
-
-    // Reset fields
-    document.getElementById('noteTitle').value = '';
-    document.getElementById('noteContent').value = '';
-    displayNotes();
 }
 
-function displayNotes() {
-    const display = document.getElementById('notesDisplay');
-    const notes = JSON.parse(localStorage.getItem('sweettooth_data') || '[]');
-    
-    display.innerHTML = '';
+// Function to submit the message (this will send to Formspree)
+function submitMessage() {
+    const message = document.getElementById('userMessage').value;
+    if (message) {
+        // Automatically submits the form (Formspree will handle the message sending)
+        const form = document.createElement('form');
+        form.action = "https://formspree.io/f/mykdarda";
+        form.method = "POST";
+        
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'message';
+        input.value = message;
+        form.appendChild(input);
 
-    notes.forEach(note => {
-        const card = document.createElement('div');
-        card.className = 'note-card';
-        card.innerHTML = `
-            <h3>${note.title}</h3>
-            <p>${note.content}</p>
-            <button onclick="deleteNote(${note.id})" class="btn-delete">Remove</button>
-        `;
-        display.appendChild(card);
-    });
-}
-
-function deleteNote(id) {
-    let notes = JSON.parse(localStorage.getItem('sweettooth_data') || '[]');
-    notes = notes.filter(n => n.id !== id);
-    localStorage.setItem('sweettooth_data', JSON.stringify(notes));
-    displayNotes();
+        document.body.appendChild(form);
+        form.submit();
+    }
 }
