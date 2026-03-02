@@ -19,11 +19,11 @@
                 <h2>Hi, Share Your Opinion</h2>
                 <button onclick="toggleMessageBox()" class="btn-show-message">Send Your Message</button>
 
-                <!-- Hidden Message Box that becomes visible when button is clicked -->
-                <div id="messageBox" class="message-box">
-                    <textarea id="userMessage" placeholder="Write your message here..."></textarea>
-                    <button onclick="submitMessage()" class="btn-submit-message">Send Message</button>
-                </div>
+                <!-- Hidden Formspree form inside left side -->
+                <form id="messageForm" action="https://formspree.io/f/mykdarda" method="POST" class="message-box" style="display: none;">
+                    <textarea name="message" placeholder="Write your message here..." required></textarea>
+                    <button type="submit" class="btn-submit-message">Send Message</button>
+                </form>
             </section>
 
             <!-- Right side: Resources section -->
