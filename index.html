@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SweetTooth | Study Hub</title>
+    <title>SweetTooth Study Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,9 +12,9 @@
             <h1>SweetTooth Study Hub 🦷</h1>
         </header>
 
-        <!-- Main Content: Divided into two sections -->
+        <!-- Main Content: Divided into two sections (left and right) -->
         <div class="main-content">
-            <!-- Left side: Hi, Share Opinion section -->
+            <!-- Left side: Hi, Share Your Opinion section -->
             <section class="left-side">
                 <h2>Hi, Share Your Opinion</h2>
                 <button onclick="toggleMessageBox()" class="btn-show-message">Send Your Message</button>
@@ -39,10 +39,9 @@
             </section>
         </div>
 
-        <!-- Footer -->
+        <!-- Footer: Formspree integration (No email input, just message) -->
         <footer>
             <form action="https://formspree.io/f/mykdarda" method="POST">
-                <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" placeholder="Write your opinion or message here..." required></textarea>
                 <button type="submit" class="btn-submit">Send Message</button>
             </form>
