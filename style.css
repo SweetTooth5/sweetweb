@@ -1,67 +1,87 @@
 body {
-    /* Background settings for your specific image */
+    /* Your requested background */
     background-image: url('uwp4984878.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     color: #fff;
 }
 
 .container {
     max-width: 900px;
-    margin: 50px auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
-    border-radius: 15px;
-    backdrop-filter: blur(5px); /* Blurs the background image slightly for readability */
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.75); /* Dark translucent background */
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-header { text-align: center; margin-bottom: 30px; }
+header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #ffb7c5; padding-bottom: 10px; }
+header h1 { color: #ffb7c5; margin: 0; font-size: 2.5em; }
 
-.note-input {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 40px;
+h2 { color: #ffb7c5; font-size: 1.5em; margin-top: 30px; }
+
+/* PDF Styling */
+.pdf-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+iframe { border: none; border-radius: 8px; margin-bottom: 10px; }
+.btn-download {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #ffb7c5;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
 }
 
+/* Note Styling */
+.note-input { display: flex; flex-direction: column; gap: 10px; }
 input, textarea {
     padding: 12px;
     border-radius: 8px;
-    border: none;
-    font-size: 16px;
-}
-
-textarea { height: 100px; resize: vertical; }
-
-button {
-    padding: 12px;
-    background-color: #ffb7c5; /* SweetTooth Pink */
+    border: 1px solid #ffb7c5;
+    background: rgba(255, 255, 255, 0.9);
     color: #333;
-    font-weight: bold;
+}
+.btn-post {
+    padding: 12px;
+    background: #ffb7c5;
     border: none;
     border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
 }
-
-button:hover { background-color: #ff9fb2; }
 
 .notes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+    margin-top: 30px;
 }
-
 .note-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: #fff;
     color: #333;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 12px;
+    position: relative;
 }
-
-.note-card h3 { margin-top: 0; color: #d63384; }
+.note-card h3 { margin-top: 0; color: #d63384; border-bottom: 1px solid #eee; }
+.btn-delete {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
