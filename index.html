@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SWEETWEB - Home</title>
+    <title>SweetTooth | Study Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>SWEETWEB</h1>
-        <p>Select a category to start rating</p>
-    </header>
-    <section id="mainButtons">
-        <a href="series.html"><button>TV Shows</button></a>
-        <a href="football.html"><button>In-Form Footballers</button></a>
-        <a href="movies.html"><button>Movies</button></a>
-        <a href="games.html"><button>Top Tier Games</button></a>
-    </section>
+    <div class="container">
+        <header>
+            <h1>SweetTooth Study Hub</h1>
+            <p>Share and organize your study notes</p>
+        </header>
+
+        <section class="note-input">
+            <input type="text" id="noteTitle" placeholder="Subject/Title">
+            <textarea id="noteContent" placeholder="Type your notes here..."></textarea>
+            <button onclick="addNote()">Post Note</button>
+        </section>
+
+        <section id="notesDisplay" class="notes-grid">
+            <!-- Notes will appear here dynamically -->
+        </section>
+    </div>
+    <script src="javascript.js"></script>
 </body>
 </html>
+
