@@ -1,49 +1,49 @@
-let ratingsData = JSON.parse(localStorage.getItem('sweetweb_data')) || {};
+// Load notes from local storage when page opens
+document.addEventListener("DOMContentLoaded", displayNotes);
 
-// Star Interaction
-document.querySelectorAll('.stars .fa-star').forEach(star => {
-    star.onclick = (e) => {
-        const parent = e.target.parentElement;
-        const rating = e.target.getAttribute('data-index');
-        parent.setAttribute('data-value', rating);
-        parent.querySelectorAll('.fa-star').forEach((s, i) => {
-            s.classList.toggle('fas', i < rating);
-            s.classList.toggle('far', i >= rating);
-        });
-    };
-});
+function addNote() {
+    const title = document.getElementById('noteTitle').value;
+    const content = document.getElementById('noteContent').value;
 
-// Vote Submission
-const submitBtn = document.querySelector('.submitBtn');
-if (submitBtn) {
-    submitBtn.onclick = () => {
-        document.querySelectorAll('.ratingItem').forEach(item => {
-            const key = item.getAttribute('data-key');
-            const val = parseInt(item.querySelector('.stars').getAttribute('data-value'));
-            if (val > 0) {
-                if (!ratingsData[key]) ratingsData[key] = { total: 0, count: 0 };
-                ratingsData[key].total += val;
-                ratingsData[key].count++;
-                localStorage.setItem('sweetweb_data', JSON.stringify(ratingsData));
-                updateUI(key);
-            }
-        });
-        document.querySelector('.rating-container').classList.add('show-results');
-        alert("Votes Recorded!");
-    };
+    if (!title || !content) {
+        alert("Please fill in both title and content!");
+        return;
+    }
+
+    const note = { title, content, id: Date.now() };
+
+    // Get existing notes or start empty array
+    const notes = JSON.parse(localStorage.getItem('sweettooth_notes') || '[]');
+    notes.push(note);
+    localStorage.setItem('sweettooth_notes', JSON.stringify(notes));
+
+    // Clear inputs and refresh display
+    document.getElementById('noteTitle').value = '';
+    document.getElementById('noteContent').value = '';
+    displayNotes();
 }
 
-function updateUI(key) {
-    const data = ratingsData[key];
-    if (!data) return;
-    const avg = data.total / data.count;
-    const percentage = Math.round((avg / 5) * 100);
-    const bar = document.getElementById(`${key}Bar`);
-    const text = document.getElementById(`${key}Percent`);
-    if (bar) bar.style.width = percentage + "%";
-    if (text) text.innerText = percentage;
+function displayNotes() {
+    const notesDisplay = document.getElementById('notesDisplay');
+    const notes = JSON.parse(localStorage.getItem('sweettooth_notes') || '[]');
+    
+    notesDisplay.innerHTML = '';
+
+    notes.forEach(note => {
+        const card = document.createElement('div');
+        card.className = 'note-card';
+        card.innerHTML = `
+            <h3>${note.title}</h3>
+            <p>${note.content}</p>
+            <button onclick="deleteNote(${note.id})" style="background: #ff4d4d; color: white; padding: 5px 10px; font-size: 12px;">Delete</button>
+        `;
+        notesDisplay.appendChild(card);
+    });
 }
 
-window.onload = () => {
-    Object.keys(ratingsData).forEach(key => updateUI(key));
-};
+function deleteNote(id) {
+    let notes = JSON.parse(localStorage.getItem('sweettooth_notes') || '[]');
+    notes = notes.filter(n => n.id !== id);
+    localStorage.setItem('sweettooth_notes', JSON.stringify(notes));
+    displayNotes();
+}
