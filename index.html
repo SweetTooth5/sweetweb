@@ -3,37 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SweetTooth | CS Study Hub</title>
+    <title>SweetTooth | Study Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>SweetTooth Hub 🦷</h1>
-            <p>Computational Resources</p> <!-- Updated title -->
+            <h1>SweetTooth Study Hub 🦷</h1>
         </header>
 
-        <!-- PDF Resource Section -->
-        <section class="resource-hub">
-            <h2>Computational Resources</h2> <!-- Updated title here as well -->
-            <div class="pdf-container">
-                <h3>📄 Upper Karnaugh Map</h3>
-                <!-- Link to open PDF in a new tab -->
-                <a href="upper-karnaugh-map.pdf" target="_blank" class="btn-download">
-                    Open PDF (Upper Karnaugh Map)
-                </a>
-                <div class="pdf-actions">
-                    <!-- Link for downloading the PDF -->
-                    <a href="upper-karnaugh-map.pdf" download class="btn-download">Download PDF</a>
-                </div>
-            </div>
-        </section>
+        <!-- Main Content: Divided into two sections -->
+        <div class="main-content">
+            <!-- Left side: Hi, Share Opinion section -->
+            <section class="left-side">
+                <h2>Hi, Share Your Opinion</h2>
+                <button onclick="toggleMessageBox()" class="btn-show-message">Send Your Message</button>
 
-        <!-- Notes Display Section (Removed Add Study Notes section for now) -->
-        <section id="notesDisplay" class="notes-grid">
-            <!-- JavaScript will inject notes here -->
-        </section>
+                <!-- Hidden Message Box that becomes visible when button is clicked -->
+                <div id="messageBox" class="message-box">
+                    <textarea id="userMessage" placeholder="Write your message here..."></textarea>
+                    <button onclick="submitMessage()" class="btn-submit-message">Send Message</button>
+                </div>
+            </section>
+
+            <!-- Right side: Resources section -->
+            <section class="right-side">
+                <h2>Computational Resources</h2>
+                <div class="pdf-container">
+                    <h3>📄 Upper Karnaugh Map</h3>
+                    <a href="upper-karnaugh-map.pdf" target="_blank" class="btn-download">Open PDF (Upper Karnaugh Map)</a>
+                    <div class="pdf-actions">
+                        <a href="upper-karnaugh-map.pdf" download class="btn-download">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <form action="https://formspree.io/f/mykdarda" method="POST">
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Write your opinion or message here..." required></textarea>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </footer>
     </div>
+
     <script src="javascript.js"></script>
 </body>
 </html>
