@@ -1,39 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Truth Bomb</title>
+  <meta charset="UTF-8">
+  <title>Truth Bomb 💣</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+
+      /* Background image */
+      background: url('wp16249044-hexagons-4k-wallpapers.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Dark overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: -1;
+    }
+
+    .box {
+      margin-top: 100px;
+      background: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 12px;
+      display: inline-block;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    input, textarea {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #ff0055;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #cc0044;
+    }
+
+    a {
+      color: #00ffff;
+      display: block;
+      margin-top: 15px;
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="login">
-  <h2>Enter Access Code</h2>
-  <input type="password" id="codeInput" />
+<!-- LOGIN -->
+<div id="login" class="box">
+  <h2>Enter Access Code 🔐</h2>
+  <input type="password" id="codeInput" placeholder="Enter code">
+  <br>
   <button onclick="checkCode()">Enter</button>
 </div>
 
-<div id="content" style="display:none;">
-  <h1>Welcome to Truth Bomb 💣</h1>
+<!-- MAIN CONTENT -->
+<div id="content" class="box" style="display:none;">
+  <h1>Truth Bomb 💣</h1>
 
-  <a href="updates.html">See Updates</a>
+  <a href="updates.html">View Updates 🔥</a>
 
-  <h3>Send a message</h3>
-  <form action="https://formspree.io/f/YOUR_ID" method="POST" enctype="multipart/form-data">
-    <textarea name="message" placeholder="Your message"></textarea><br><br>
-    <input type="file" name="file"><br><br>
-    <button type="submit">Send</button>
+  <h3>Send your message anonymously</h3>
+
+  <form action="https://formspree.io/f/mjgpvjez" method="POST" enctype="multipart/form-data">
+    <textarea name="message" placeholder="Type your message..." required></textarea><br>
+    <input type="file" name="file"><br>
+    <button type="submit">Send 💌</button>
   </form>
 </div>
 
 <script>
-function checkCode() {
-  var code = document.getElementById("codeInput").value;
-  if (code === "0000") {
+  // Auto-login if already entered before
+  if (localStorage.getItem("access") === "granted") {
     document.getElementById("login").style.display = "none";
     document.getElementById("content").style.display = "block";
-  } else {
-    alert("Wrong code");
   }
-}
+
+  function checkCode() {
+    var code = document.getElementById("codeInput").value;
+
+    if (code === "0000") {
+      localStorage.setItem("access", "granted");
+      location.reload();
+    } else {
+      alert("Wrong code ❌");
+    }
+  }
 </script>
 
 </body>
