@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Truth Bomb</title>
+</head>
+<body>
+
+<div id="login">
+  <h2>Enter Access Code</h2>
+  <input type="password" id="codeInput" />
+  <button onclick="checkCode()">Enter</button>
+</div>
+
+<div id="content" style="display:none;">
+  <h1>Welcome to Truth Bomb 💣</h1>
+
+  <a href="updates.html">See Updates</a>
+
+  <h3>Send a message</h3>
+  <form action="https://formspree.io/f/YOUR_ID" method="POST" enctype="multipart/form-data">
+    <textarea name="message" placeholder="Your message"></textarea><br><br>
+    <input type="file" name="file"><br><br>
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<script>
+function checkCode() {
+  var code = document.getElementById("codeInput").value;
+  if (code === "0000") {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  } else {
+    alert("Wrong code");
+  }
+}
+</script>
+
+</body>
+</html>
