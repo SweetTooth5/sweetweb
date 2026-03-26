@@ -19,6 +19,28 @@
       background-size: cover;
     }
 
+    /* GLOWING HEADERS */
+    h1 {
+      font-size: 2.5em;
+      color: #ff0055;
+      text-shadow:
+        0 0 5px #ff0055,
+        0 0 10px #ff0055,
+        0 0 20px #ff3399,
+        0 0 40px #ff3399,
+        0 0 60px #ff66cc;
+    }
+
+    h3 {
+      font-size: 1.3em;
+      color: #ff77aa;
+      text-shadow:
+        0 0 3px #ff77aa,
+        0 0 6px #ff77aa,
+        0 0 10px #ff99cc,
+        0 0 15px #ff99cc;
+    }
+
     .box {
       margin-top: 100px;
       background: rgba(0,0,0,0.6);
@@ -56,7 +78,7 @@
 
 <!-- LOGIN -->
 <div id="login" class="box">
-  <h2>Enter Code</h2>
+  <h2>Place CODE 🔐</h2>
   <input type="password" id="codeInput" placeholder="Enter code">
   <br>
   <button onclick="checkCode()">Enter</button>
@@ -65,11 +87,11 @@
 <!-- MAIN CONTENT -->
 <div id="content" class="box" style="display:none;">
   <h1>The Truth Bomb</h1>
-  <h3>Confess / Expose / Share thought</h3>
+  <h3>Confess, Expose, Share Thought.........</h3>
 
   <form action="https://formspree.io/f/mjgpvjez" method="POST">
     <textarea name="message" placeholder="Type your message..." required></textarea><br>
-    <button type="submit">SEND</button>
+    <button type="submit">Send</button>
   </form>
 </div>
 
@@ -83,7 +105,7 @@
   function checkCode() {
     var code = document.getElementById("codeInput").value;
 
-    if (code === "8462") {
+    if (code === "0000") {
       localStorage.setItem("access", "granted");
       location.reload();
     } else {
