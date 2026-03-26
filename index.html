@@ -56,7 +56,7 @@
 
 <!-- LOGIN -->
 <div id="login" class="box">
-  <h2>Place CODE 🔐</h2>
+  <h2>Enter Code</h2>
   <input type="password" id="codeInput" placeholder="Enter code">
   <br>
   <button onclick="checkCode()">Enter</button>
@@ -65,11 +65,11 @@
 <!-- MAIN CONTENT -->
 <div id="content" class="box" style="display:none;">
   <h1>The Truth Bomb</h1>
-  <h3>Confess, Expose, Share Thought.........</h3>
+  <h3>Confess / Expose / Share thought/ Say hi.....</h3>
 
   <form action="https://formspree.io/f/mjgpvjez" method="POST">
     <textarea name="message" placeholder="Type your message..." required></textarea><br>
-    <button type="submit">Send</button>
+    <button type="submit">SEND</button>
   </form>
 </div>
 
@@ -83,7 +83,7 @@
   function checkCode() {
     var code = document.getElementById("codeInput").value;
 
-    if (code === "0000") {
+    if (code === "8462") {
       localStorage.setItem("access", "granted");
       location.reload();
     } else {
