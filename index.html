@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SweetTooth Chat</title>
+  <style>
+    body {
+      background: url("wp16040751-2560x1440-green-wallpapers.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 50px auto;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    /* Left Column: Admin TREND Box */
+    #trending-box {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 8px;
+      border-right: 3px solid #ff9800;
+      align-self: flex-start;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    #chat-box {
+      flex: 2;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+    }
+
+    #leaderboard {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 3px solid #4CAF50;
+      align-self: flex-start;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    #messages-container {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 15px;
+      padding-right: 5px;
+    }
+
+    #messages, #ranking-list, #trending-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    #messages li, #ranking-list li, #trending-list li {
+      margin: 10px 0;
+      padding: 10px 5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #trending-list li {
+      font-size: 15px;
+      line-height: 1.4;
+      color: #ffb74d;
+      font-weight: bold;
+    }
+
+    .unread-divider {
+      background: rgba(0, 128, 255, 0.2);
+      border: 1px solid #0080ff;
+      color: #70b5ff;
+      text-align: center;
+      padding: 6px;
+      margin: 15px 0;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .input-area {
+      display: flex;
+      gap: 10px;
+    }
+
+    #msg {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .like-btn {
+      background: none;
+      border: 1px solid #4CAF50;
+      padding: 2px 6px;
+      margin-left: 10px;
+      font-size: 12px;
+    }
+    
+    .like-btn.liked {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .floating-like {
+      position: fixed;
+      font-size: 24px;
+      pointer-events: none;
+      z-index: 9999;
+      animation: floatUpAndFade 1s ease-out forwards;
+    }
+
+    @keyframes floatUpAndFade {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-50px) translateX(-15px) scale(1.4);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-120px) translateX(10px) scale(1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Left Column: Trend -->
+    <div id="trending-box">
+      <h3>TREND</h3>
+      <ul id="trending-list"></ul>
+    </div>
+
+    <!-- Center Column: Main Chat -->
+    <div id="chat-box">
+      <h2>Pinda MuNimbo</h2>
+      <div id="messages-container">
+        <ul id="messages"></ul>
+      </div>
+      <div class="input-area">
+        <input id="msg" placeholder="Type a message..." onkeydown="if(event.key === 'Enter') sendMessage()" />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <!-- Right Column: Top Liked Messages -->
+    <div id="leaderboard">
+      <h3>TOP LIKED</h3>
+      <ol id="ranking-list"></ol>
+    </div>
+  </div>
+
+  <script>
+    let username = localStorage.getItem("sweetweb_username");
+    while (!username || username.trim() === "" || username === "null" || username === "undefined") {
+      username = prompt("Enter your username:");
+      if (username) username = username.trim();
+    }
+    localStorage.setItem("sweetweb_username", username);
+
+    let lastMessageCount = 0;
+    let unreadCount = 0;
+    let isWindowFocused = true;
+
+    window.addEventListener('focus', () => {
+      isWindowFocused = true;
+      document.title = "SweetTooth Chat";
+      
+      setTimeout(() => {
+        if (isWindowFocused) {
+          unreadCount = 0;
+          const divider = document.getElementById("unread-bar");
+          if (divider) divider.remove();
+        }
+      }, 4000);
+    });
+
+    window.addEventListener('blur', () => {
+      isWindowFocused = false;
+    });
+
+    async function loadMessages() {
+      // 1. Fetch messages
+      const res = await fetch("/messages");
+      const msgs = await res.json();
+      
+      const incomingCount = msgs.length - lastMessageCount;
+
+      if (incomingCount > 0) {
+        if (!isWindowFocused) {
+          unreadCount += incomingCount;
+          document.title = `(${unreadCount}) SweetTooth Chat`;
+          renderChatList(msgs, msgs.length - unreadCount);
+        } else {
+          renderChatList(msgs, null);
+          const container = document.getElementById("messages-container");
+          container.scrollTop = container.scrollHeight;
+        }
+        lastMessageCount = msgs.length;
+      } else {
+        renderChatList(msgs, unreadCount > 0 ? msgs.length - unreadCount : null);
+      }
+
+      renderLeaderboard(msgs);
+
+      // 2. Fetch admin trends
+      const trendsRes = await fetch("/trends");
+      const trends = await trendsRes.json();
+      renderTrends(trends);
+    }
+
+    function renderChatList(msgs, unreadStartIndex) {
+      const list = document.getElementById("messages");
+      list.innerHTML = "";
+
+      msgs.forEach((m, index) => {
+        if (unreadStartIndex !== null && index === unreadStartIndex) {
+          const divider = document.createElement("div");
+          divider.id = "unread-bar";
+          divider.className = "unread-divider";
+          divider.textContent = `👇 NEW`;
+          list.appendChild(divider);
+        }
+
+        const li = document.createElement("li");
+        const shortTime = m.time.split(":").slice(0, 2).join(":");
+        const likeCount = m.likedBy ? m.likedBy.length : 0;
+        const hasLiked = m.likedBy && m.likedBy.includes(username);
+
+        li.innerHTML = `
+          [${shortTime}] <strong>${m.user}</strong>: ${m.text}
+          <button class="like-btn ${hasLiked ? 'liked' : ''}" onclick="likeMessage('${m.id}', event)">👍 ${likeCount}</button>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function renderLeaderboard(msgs) {
+      const leaderboardList = document.getElementById("ranking-list");
+      leaderboardList.innerHTML = "";
+      
+      const topMessages = [...msgs]
+        .filter(m => m.likedBy && m.likedBy.length > 0)
+        .sort((a, b) => b.likedBy.length - a.likedBy.length)
+        .slice(0, 10);
+
+      topMessages.forEach(m => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${m.user}</strong>: "${m.text}" - <span style="color:#4CAF50">${m.likedBy.length} likes</span>`;
+        leaderboardList.appendChild(li);
+      });
+    }
+
+    function renderTrends(trends) {
+      const trendingList = document.getElementById("trending-list");
+      trendingList.innerHTML = "";
+
+      trends.forEach(trendText => {
+        const li = document.createElement("li");
+        li.textContent = ` ${trendText}`;
+        trendingList.appendChild(li);
+      });
+    }
+
+    async function sendMessage() {
+      const text = document.getElementById("msg").value;
+      if (!text) return;
+      await fetch("/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, user: username })
+      });
+      document.getElementById("msg").value = "";
+      loadMessages();
+    }
+
+    async function likeMessage(id, event) {
+      createFloatingLike(event.clientX, event.clientY);
+
+      await fetch(`/messages/${id}/like`, { 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user: username })
+      });
+      loadMessages();
+    }
+
+    function createFloatingLike(x, y) {
+      const emoji = document.createElement("div");
+      emoji.className = "floating-like";
+      emoji.textContent = "👍"; // Changed to thumbs-up
+      
+      emoji.style.left = `${x - 12}px`;
+      emoji.style.top = `${y - 20}px`;
+      
+      document.body.appendChild(emoji);
+      
+      setTimeout(() => {
+        emoji.remove();
+      }, 1000);
+    }
+
+    setInterval(loadMessages, 2000);
+    loadMessages();
+  </script>
+</body>
+</html>
