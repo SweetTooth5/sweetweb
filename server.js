@@ -1,13 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // ✅ Use Render's port
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static("Public"));
+app.use(express.static(path.join(__dirname, "Public"))); // ✅ serve static files
 
 // Admin username restriction
 const ADMIN_USERNAME = "VaTapfunyi"; 
@@ -17,7 +18,12 @@ let messages = [];
 // Starter trend list
 let trends = [
   "Bhutsu yaGake Kwangova kupedza polish"
-  ];
+];
+
+// ✅ Root route to serve index.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 // Get all messages
 app.get("/messages", (req, res) => {
@@ -39,13 +45,13 @@ app.post("/messages", (req, res) => {
 
   const trimmedUser = user.trim();
 
-  // 1. ADD TREND COMMAND: `/trend [text]`
+  // ADD TREND COMMAND
   if (text.startsWith("/trend ")) {
     if (trimmedUser === ADMIN_USERNAME) {
       const newTrend = text.replace("/trend ", "").trim();
       if (newTrend) {
-        trends.unshift(newTrend); // Newest trend goes to top
-        if (trends.length > 10) trends.pop(); // Maintain list max limit
+        trends.unshift(newTrend);
+        if (trends.length > 10) trends.pop();
         return res.json({ system: true, text: "Trend updated successfully!" });
       }
     } else {
@@ -53,15 +59,12 @@ app.post("/messages", (req, res) => {
     }
   }
 
-  // 2. REMOVE TREND COMMAND: `/untrend [exact text]`
+  // REMOVE TREND COMMAND
   if (text.startsWith("/untrend ")) {
     if (trimmedUser === ADMIN_USERNAME) {
       const trendToRemove = text.replace("/untrend ", "").trim();
       const initialLength = trends.length;
-      
-      // Keep everything that does NOT match the specified string (case-insensitive)
       trends = trends.filter(t => t.toLowerCase() !== trendToRemove.toLowerCase());
-      
       if (trends.length < initialLength) {
         return res.json({ system: true, text: "Trend removed successfully!" });
       } else {
