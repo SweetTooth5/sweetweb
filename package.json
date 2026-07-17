@@ -1,0 +1,14 @@
+{
+  "name": "sweetweb",
+  "version": "1.0.0",
+  "description": "Drop banter messages, like them, and see the top 6 rise to the top.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.3.0",
+    "cors": "^2.8.6",
+    "express": "^4.22.2"
+  }
+}
